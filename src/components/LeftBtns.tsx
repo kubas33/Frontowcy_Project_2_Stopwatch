@@ -1,11 +1,11 @@
 import {Button, ButtonGroup} from "react-bootstrap";
 
-export const LeftBtns = () => {
+export const LeftBtns = ({onStart, onLap}: { onStart: () => void; onLap: () => void }) => {
 
     return (
         <ButtonGroup className={'left-btns orbitron-400'} vertical={true}>
-            <Button variant={"success"}>Start</Button>
-            <Button variant={"dark"}>Lap</Button>
+            <Button variant={"success"} onClick={onStart}>Start</Button>
+            <Button variant={"dark"} onClick={onLap}>Lap</Button>
         </ButtonGroup>
     );
 }
