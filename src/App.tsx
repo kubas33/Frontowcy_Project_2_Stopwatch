@@ -1,6 +1,6 @@
 
 import './App.scss'
-import { Container} from "react-bootstrap";
+import {Container} from "react-bootstrap";
 import {Stopwatch} from "./components/Stopwatch.tsx";
 
 function App() {

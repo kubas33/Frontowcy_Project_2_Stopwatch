@@ -1,13 +1,19 @@
 .stopwatch-container {
+    height: 12rem;
+}
+
+.timers-container {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     background-color: #f5f5f5;
-    border-radius: 10px;
-    border: black solid 1px;
+    //border-radius: 10px;
+    border-top: black solid 1px;
+    border-bottom: black solid 1px;
     padding: 0;
     max-width: 20rem;
+    width: 16rem;
 }
 
 .timer:nth-child(1) {
@@ -24,5 +30,31 @@
 
     p {
         margin: 0;
+    }
+}
+
+.left-btns {
+    height: 100%;
+    button:nth-child(1) {
+        border-top-right-radius: 0;
+    }
+    button:nth-child(2) {
+        border-bottom-right-radius: 0;
+    }
+}
+.left-btns, .right-btns {
+    height: 100%;
+    button:nth-child(n) {
+        border: black solid 1px;
+    }
+}
+
+.right-btns {
+    height: 100%;
+    button:nth-child(1) {
+        border-top-left-radius: 0;
+    }
+    button:nth-child(2) {
+        border-bottom-left-radius: 0;
     }
 }
