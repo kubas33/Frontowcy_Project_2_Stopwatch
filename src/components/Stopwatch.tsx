@@ -9,7 +9,7 @@ export const Stopwatch = () => {
         <Container fluid={"sm"} className={"stopwatch-container"}>
             <Stack direction={"horizontal"} className={"h-100"} gap={0}>
                 <LeftBtns/>
-                <Stack gap={0} className={"timers-container"}>
+                <Stack gap={0} className={"timers-container orbitron-600 uppercase"}>
                     <TotalTimeTimer/>
                     <LapTimeTimer/>
                 </Stack>

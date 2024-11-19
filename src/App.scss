@@ -1,3 +1,23 @@
+@mixin orbitron {
+    font-family: "Orbitron", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+}
+
+.orbitron-600 {
+    @include orbitron;
+    font-weight: 600;
+}
+
+.orbitron-400 {
+    @include orbitron;
+    font-weight: 400;
+}
+
+.uppercase {
+    text-transform: uppercase;
+}
+
 .stopwatch-container {
     height: 12rem;
 }
@@ -14,6 +34,7 @@
     padding: 0;
     max-width: 20rem;
     width: 16rem;
+    font-size: larger;
 }
 
 .timer:nth-child(1) {
@@ -35,25 +56,32 @@
 
 .left-btns {
     height: 100%;
+
     button:nth-child(1) {
         border-top-right-radius: 0;
     }
+
     button:nth-child(2) {
         border-bottom-right-radius: 0;
     }
 }
+
 .left-btns, .right-btns {
     height: 100%;
+
     button:nth-child(n) {
         border: black solid 1px;
+        text-transform: uppercase;
     }
 }
 
 .right-btns {
     height: 100%;
+
     button:nth-child(1) {
         border-top-left-radius: 0;
     }
+
     button:nth-child(2) {
         border-bottom-left-radius: 0;
     }
