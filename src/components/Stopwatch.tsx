@@ -5,6 +5,7 @@ import {LeftBtns} from "./LeftBtns.tsx";
 import {RightBtns} from "./RightBtns.tsx";
 import {useEffect, useState} from "react";
 import {LapTimesTable} from "./LapTimesTable.tsx";
+import {Summary} from "./Summary.tsx";
 
 export const Stopwatch = () => {
     const [isRunning, setIsRunning] = useState(false);
@@ -12,6 +13,7 @@ export const Stopwatch = () => {
     const [totalTime, setTotalTime] = useState(0);
     const [lapTime, setLapTime] = useState(0);
     const [bestLapTime, setBestLapTime] = useState(0);
+    const [isTimerHidden, setIsTimerHidden] = useState(false);
 
     useEffect(() => {
         if (isRunning) {
@@ -28,10 +30,12 @@ export const Stopwatch = () => {
 
     const handleStart = () => {
         setIsRunning(true);
+        setIsTimerHidden(false);
     };
 
     const handleStop = () => {
         setIsRunning(false);
+        setIsTimerHidden(true);
     };
 
     const handleLap = () => {
@@ -41,28 +45,34 @@ export const Stopwatch = () => {
     };
 
     const handleReset = () => {
-        setIsRunning(false);
         setLaps([]);
         setTotalTime(0);
         setLapTime(0);
+        setBestLapTime(0);
     };
 
 
     return (
         <Container fluid={"sm"} className={"stopwatch-container "}>
-            <Stack direction={"vertical"} gap={3} className={"h-100"}>
-                <Stack direction={"horizontal"} className={"h-100 justify-content-center align-items-center"}
-                       gap={0}>
-                    <LeftBtns onStart={handleStart} onLap={handleLap}/>
-                    <Stack gap={0} className={"timers-container orbitron-600 uppercase"}>
-                        <TotalTimeTimer totalTime={totalTime} laps={laps.length}/>
-                        <LapTimeTimer currentLapTime={lapTime} bestLapTime={bestLapTime}/>
+            {!isTimerHidden && (
+                <Stack direction={"vertical"} gap={3} className={"h-100"}>
+                    <Stack
+                        direction={"horizontal"}
+                        className={"h-100 justify-content-center align-items-center"}
+                        gap={0}
+                    >
+                        <LeftBtns onStart={handleStart} onLap={handleLap}/>
+                        <Stack gap={0} className={"timers-container orbitron-600 uppercase"}>
+                            <TotalTimeTimer totalTime={totalTime} laps={laps.length}/>
+                            <LapTimeTimer currentLapTime={lapTime} bestLapTime={bestLapTime}/>
+                        </Stack>
+                        <RightBtns onReset={handleReset} onStop={handleStop}/>
                     </Stack>
-                    <RightBtns onReset={handleReset} onStop={handleStop}/>
+                    {laps.length > 0 && <LapTimesTable laps={laps} bestLapTime={bestLapTime}/>}
                 </Stack>
-                <LapTimesTable laps={laps} bestLapTime={bestLapTime}/>
-            </Stack>
+            )}
+            {isTimerHidden && <Summary laps={laps} bestLapTime={bestLapTime} totalTime={totalTime}/>}
         </Container>
+    );
 
-    )
 }

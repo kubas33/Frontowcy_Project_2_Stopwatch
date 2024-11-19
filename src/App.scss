@@ -4,6 +4,8 @@
     font-style: normal;
 }
 
+$timers-height: 200px;
+
 .orbitron-600 {
     @include orbitron;
     font-weight: 600;
@@ -19,10 +21,11 @@
 }
 
 .stopwatch-container {
-    height: 12rem;
+    max-width: 500px;
 }
 
 .timers-container {
+    height: $timers-height;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -55,8 +58,6 @@
 }
 
 .left-btns {
-    height: 100%;
-
     button:nth-child(1) {
         border-top-right-radius: 0;
     }
@@ -67,7 +68,7 @@
 }
 
 .left-btns, .right-btns {
-    height: 100%;
+    height: $timers-height;
 
     button:nth-child(n) {
         border: black solid 1px;
@@ -76,8 +77,6 @@
 }
 
 .right-btns {
-    height: 100%;
-
     button:nth-child(1) {
         border-top-left-radius: 0;
     }
