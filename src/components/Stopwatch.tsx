@@ -4,6 +4,7 @@ import {LapTimeTimer} from "./LapTimeTimer.tsx";
 import {LeftBtns} from "./LeftBtns.tsx";
 import {RightBtns} from "./RightBtns.tsx";
 import {useEffect, useState} from "react";
+import {LapTimesTable} from "./LapTimesTable.tsx";
 
 export const Stopwatch = () => {
     const [isRunning, setIsRunning] = useState(false);
@@ -48,15 +49,20 @@ export const Stopwatch = () => {
 
 
     return (
-        <Container fluid={"sm"} className={"stopwatch-container"}>
-            <Stack direction={"horizontal"} className={"h-100"} gap={0}>
-                <LeftBtns onStart={handleStart} onLap={handleLap}/>
-                <Stack gap={0} className={"timers-container orbitron-600 uppercase"}>
-                    <TotalTimeTimer totalTime={totalTime} laps={laps.length}/>
-                    <LapTimeTimer currentLapTime={lapTime} bestLapTime={bestLapTime}/>
+        <Container fluid={"sm"} className={"stopwatch-container "}>
+            <Stack direction={"vertical"} gap={3} className={"h-100"}>
+                <Stack direction={"horizontal"} className={"h-100 justify-content-center align-items-center"}
+                       gap={0}>
+                    <LeftBtns onStart={handleStart} onLap={handleLap}/>
+                    <Stack gap={0} className={"timers-container orbitron-600 uppercase"}>
+                        <TotalTimeTimer totalTime={totalTime} laps={laps.length}/>
+                        <LapTimeTimer currentLapTime={lapTime} bestLapTime={bestLapTime}/>
+                    </Stack>
+                    <RightBtns onReset={handleReset} onStop={handleStop}/>
                 </Stack>
-                <RightBtns onReset={handleReset} onStop={handleStop}/>
+                <LapTimesTable laps={laps} bestLapTime={bestLapTime}/>
             </Stack>
         </Container>
+
     )
 }

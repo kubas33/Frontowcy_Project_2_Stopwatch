@@ -86,3 +86,15 @@
         border-bottom-left-radius: 0;
     }
 }
+
+.lap-times-table {
+    max-width: 12rem;
+    margin: 0 auto;
+    font-size: 1.2rem;
+
+    .best-lap {
+        td {
+            color: red !important;
+        }
+    }
+}
