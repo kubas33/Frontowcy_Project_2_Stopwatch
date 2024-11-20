@@ -51,6 +51,10 @@ export const Stopwatch = () => {
         setBestLapTime(0);
     };
 
+    const handleGoBack = () => {
+        setIsTimerHidden(false);
+    }
+
 
     return (
         <Container fluid={"sm"} className={"stopwatch-container "}>
@@ -71,7 +75,8 @@ export const Stopwatch = () => {
                     {laps.length > 0 && <LapTimesTable laps={laps} bestLapTime={bestLapTime}/>}
                 </Stack>
             )}
-            {isTimerHidden && <Summary laps={laps} bestLapTime={bestLapTime} totalTime={totalTime}/>}
+            {isTimerHidden &&
+                <Summary laps={laps} bestLapTime={bestLapTime} totalTime={totalTime} handleGoBack={handleGoBack}/>}
         </Container>
     );
 

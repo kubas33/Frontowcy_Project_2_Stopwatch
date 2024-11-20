@@ -1,7 +1,12 @@
-import {ListGroup} from "react-bootstrap";
+import {Button, ListGroup} from "react-bootstrap";
 import {formatTime} from "../utils/Helpers.tsx";
 
-export const Summary = ({laps, bestLapTime, totalTime}: { laps: number[], bestLapTime: number, totalTime: number }) => {
+export const Summary = ({laps, bestLapTime, totalTime, handleGoBack}: {
+    laps: number[],
+    bestLapTime: number,
+    totalTime: number,
+    handleGoBack: () => void
+}) => {
 
     const averageTime = (laps: number[]) => {
         const totalTime = laps.reduce((total, lap) => total + lap, 0);
@@ -20,5 +25,6 @@ export const Summary = ({laps, bestLapTime, totalTime}: { laps: number[], bestLa
             <ListGroup.Item as={"li"}>Slowest: {formatTime(slowestLap(laps))}</ListGroup.Item>
             <ListGroup.Item as={"li"}>Best: {formatTime(bestLapTime)}</ListGroup.Item>
         </ListGroup>
+        <Button className={'mt-2 w-100'} variant={"primary"} onClick={handleGoBack}>Back</Button>
     </>)
 }
